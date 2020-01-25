@@ -14,6 +14,8 @@ import {
   View,
   Text,
   StatusBar,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -24,91 +26,87 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+import Main from './android/app/Components/Main'
+import Note from './android/app/Components/Note'
+
+
+export default class App extends React.Component{
+  render(){
+    return(
+     <View style={styles.container}>
+
+      <View style={styles.header}>
+        <Text style={styles.headerText}> -NOTED- </Text>
+      </View>
+
+      <ScrollView style={styles.ScrollView}>
+        <Text>Tudo App</Text>
+       
+      </ScrollView>
+
+      <View style={styles.footer}>
+        <TextInput 
+                   style={styles.TextInput}
+                   placeholder='note'
+                   placeholderTextColoer='white'
+                   underlineColorAndroid='transparent'>
+        </TextInput>
+      </View>
+
+      <TouchableOpacity style={styles.addButton}>
+        <Text style={styles.addButtonText}>+</Text>
+      </TouchableOpacity>
+
+     </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container:{
+    flex:1,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  header:{
+    backgroundColor:'#172f1e',
+    alignItems:'center',
+    borderBottomWidth:10,
+    borderBottomColor:'#6cac7f',
   },
-  body: {
-    backgroundColor: Colors.white,
+  scrollContainer:{
+    flex:1,
+    marginBottom:100,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  footer:{
+    position:'absolute',
+    bottom:0,
+    left:0,
+    right:0,
+    zIndex:10,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  TextInput:{
+    alignSelf:'stretch',
+    color:'#fff',
+    padding:20,
+    backgroundColor:'#172f1e',
+    borderTopWidth:2,
+    borderTopColor:'#ededed',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  addButtonText:{
+    color:'#9de50e',
+    fontSize:50,
   },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  addButton:{
+    position:'absolute',
+    zIndex:11,
+    right:20,
+    bottom:90,
+    backgroundColor:'#5d6f39',
+    width:50,
+    height:50,
+    borderRadius:50,
+    alignItems:'center',
+    justifyContent:'center',
+    elevation:8,
+  }
 });
 
-export default App;
