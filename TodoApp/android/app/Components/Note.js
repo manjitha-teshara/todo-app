@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -28,12 +29,12 @@ export default class Note extends React.Component{
   render(){
     return(
      
-      <View key={this.props.keyval} style={styles.note}>
-         <Text>Note js</Text>
+      <View key={this.props.keyval} style={styles.note}>         
          <Text style={styles.noteText}>{this.props.val.date}</Text> 
-         <Text style={styles.noteText}>{this.props.val.date}</Text> 
+         <Text style={styles.noteText}>{this.props.val.note}</Text> 
+
          <TouchableOpacity onPress={this.props.deleteMethod} style={styles.noteDelete}>     
-           <Text style={style.noteDeleteText}>D</Text>
+           <Text style={styles.noteDeleteText}>D</Text>
           </TouchableOpacity>
       </View>
      
@@ -47,18 +48,18 @@ const styles = StyleSheet.create({
     padding:20,
     paddingRight:100,
     borderBottomWidth:2,
-    borderBottomColor:'#ededed',
+    borderBottomColor:'#3ab522',
   },
   noteText:{
     paddingLeft:20,
     borderLeftWidth:10,
-    borderLeftColor:'#E91E63',
+    borderLeftColor:'#3ab522',
   },
   noteDelete:{
     position:'absolute',
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'#2980b9',
+    backgroundColor:'#3ab522',
     padding:10,
     top:10,
     bottom:10,
